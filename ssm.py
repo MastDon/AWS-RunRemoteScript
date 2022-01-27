@@ -18,4 +18,4 @@ for i in describeInstance['Reservations']:
         if instance["State"]["Name"] == "running":
             InstanceId.append(instance['InstanceId'])
 
-    # print(InstanceId['InstanceId'])
+     print(InstanceId['InstanceId'])

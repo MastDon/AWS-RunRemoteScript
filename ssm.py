@@ -23,7 +23,7 @@ import shutil
 
 DB_HOST = 'localhost' # Can be RDS/localhost
 DB_USER = 'backup'
-DB_USER_PASSWD = 'password'
+DB_USER_PASSWD = 'password1'
 BACKUP_PATH = '/tmp/hell' # location on local host to save dump before uploading to S3
 DeleteOlderThan = 10 # Delete the dumps older then mentioned days
 

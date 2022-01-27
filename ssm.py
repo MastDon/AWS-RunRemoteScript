@@ -60,32 +60,4 @@ for DB_NAME in os.popen(GET_DB_LIST).readlines():
     else:
         os.popen("mysqldump -u %s -p%s -h %s -e --opt -c %s | gzip -c > %s.gz" % (DB_USER,DB_USER_PASSWD,DB_HOST,DB_NAME,DB_NAME+"_"+DATETIME))
 
-#### upload to the S3 Bucket Section
-
-#s3_file = s3fs.S3FileSystem()
-#local_path = BACKUP_PATH
-#s3_path = S3_BUCKET
-#s3_file.put(local_path, s3_path, recursive=True)
-
-### Get the complete path of the file that we want to upload
-
-# for root, dirs, files in os.walk(BACKUP_PATH):
-#     for File_Name in files:
-#         local_file_path = os.path.join(root, File_Name)
-#         k = Key(bucket_name)
-#         file_name_to_use_in_s3 = os.path.basename(local_file_path)
-#         k.key = file_name_to_use_in_s3
-#         k.set_contents_from_filename(local_file_path)
-        ### Delete the Compressed Files from local backup directory
-        # os.unlink(local_file_path)
-
-
-### Delete the files from S3 Bucket, that are older than specified days
-# for key in bucket_name.list():
-#     last_modified_time = time.mktime(time.strptime(key.last_modified.split(".")[0], "%Y-%m-%dT%H:%M:%S"))
-#     time_now = time.time()
-#     if last_modified_time > (time_now - DeleteOlderThan):
-#         continue
-#     else:
-#         print (key.name)
-#         key.delete()
+aws s3 cp /tmp/hell s3://dp-s3-education/backup_test/ --recursive

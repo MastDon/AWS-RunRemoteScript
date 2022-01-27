@@ -2,7 +2,7 @@
 import os
 import time
 import shutil
-import boto
+#import boto
 import s3fs
 
 from boto.s3.connection import S3Connection

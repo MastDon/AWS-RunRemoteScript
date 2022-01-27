@@ -1,35 +1,21 @@
-import boto3
 import time
-import datetime
+import json
+import boto3
 
-ec2 = boto3.resource('ec2')
+# boto3 client
+ec2 = boto3.client('ec2')
+ssm = boto3.client('ssm')
 
-sns = boto3.client('sns', region_name="eu-central-1")
+# getting instance information
+describeInstance = ec2.describe_instances()
 
-backup_filter = [
-    {
-        'Name': 'tag:Backup',
-        'Values': ['Yes']
+InstanceId = []
 
-    }
+# fetching public ip address of the running instances
 
-]
+for i in describeInstance['Reservations']:
+    for instance in i['Instances']:
+        if instance["State"]["Name"] == "running":
+            InstanceId.append(instance['InstanceId'])
 
-ami_ids = []
-
-for ins in ec2.instances.filter(Filters=backup_filter):
-    ins.create_image(
-        Name='dev-pro-demo-ami' + str(time.time()),
-        Description='Set your description here ',
-        NoReboot=True
-
-    ),
-    ami_ids.append(ins.instance_id),
-
-    sns.publish(
-        TopicArn='arn:aws:sns:eu-central-1:055524789533:Lambda-Notification',
-        Subject='EC2 backup AMI',
-        Message='Successful create AMI for instances : ' + str(ami_ids),
-
-    )
-
+    # print(InstanceId['InstanceId'])

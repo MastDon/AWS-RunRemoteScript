@@ -3,15 +3,15 @@ import os
 import time
 import shutil
 #import boto
-import s3fs
+#import s3fs
 
-from boto.s3.connection import S3Connection
-from boto.s3.key import Key
+#from boto.s3.connection import S3Connection
+#from boto.s3.key import Key
 # s3://dp-s3-education/backup_test/  S3://bucket-name
 
 
 
-S3_BUCKET = 'dp-s3-education/backup_test'
+#S3_BUCKET = 'dp-s3-education/backup_test'
 
 ### Create Connection to S3 ###
 
@@ -62,10 +62,10 @@ for DB_NAME in os.popen(GET_DB_LIST).readlines():
 
 #### upload to the S3 Bucket Section
 
-s3_file = s3fs.S3FileSystem()
-local_path = BACKUP_PATH
-s3_path = S3_BUCKET
-s3_file.put(local_path, s3_path, recursive=True)
+#s3_file = s3fs.S3FileSystem()
+#local_path = BACKUP_PATH
+#s3_path = S3_BUCKET
+#s3_file.put(local_path, s3_path, recursive=True)
 
 ### Get the complete path of the file that we want to upload
 

@@ -5,18 +5,7 @@ import shutil
 #import boto
 #import s3fs
 
-#from boto.s3.connection import S3Connection
-#from boto.s3.key import Key
-# s3://dp-s3-education/backup_test/  S3://bucket-name
 
-
-
-#S3_BUCKET = 'dp-s3-education/backup_test'
-
-### Create Connection to S3 ###
-
-# aws_conn = S3Connection(AWS_ACCESS_KEY_ID,AWS_SECRET_ACCESS_KEY)
-# bucket_name = aws_conn.get_bucket(S3_BUCKET)
 
 
 ### MySQL database details to which backup to be done.

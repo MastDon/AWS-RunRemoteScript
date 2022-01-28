@@ -49,4 +49,4 @@ for DB_NAME in os.popen(GET_DB_LIST).readlines():
     else:
         os.popen("mysqldump -u %s -p%s -h %s -e --opt -c %s | gzip -c > %s.gz" % (DB_USER,DB_USER_PASSWD,DB_HOST,DB_NAME,DB_NAME+"_"+DATETIME))
 
-os.popen('aws s3 cp /tmp/hell s3://dp-s3-education/backup_test/ --recursive')
+os.popen('aws s3 cp BACKUP_PATH s3://dp-s3-education/backup_test/ --recursive')
